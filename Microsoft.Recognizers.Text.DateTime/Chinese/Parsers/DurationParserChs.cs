@@ -58,6 +58,12 @@ namespace Microsoft.Recognizers.Text.DateTime.Chinese
 
             var parseResult = InternalParser.Parse(er);
             var unitResult = parseResult.Value as UnitValue;
+
+            if (unitResult == null)
+            {
+                return null;
+            }
+
             var dtParseResult = new DateTimeResolutionResult();
             var unitStr = unitResult.Unit;
             var numStr = unitResult.Number;
